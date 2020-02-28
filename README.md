@@ -73,57 +73,33 @@
 
 ## About The Tutorial
 
-AWS EC2 인스턴스에 접속하기 위하여 접속 관련 정보를 관리하고 사용해야하는데 있어 번거로움
+AWS EC2 인스턴스에 새로운 환경 설정을 하기에 편리하며
 
-AWS EC2 인스턴스에 리소스 관리를 CLI 로 작업해야하는 번거로움
+가벼운 프로세스 연동으로 서버 전반적으로 가벼운 구동이 가능
 
-타인과 협업을 하게 될 경우, AWS 인증 키를 여러 개 만듦(또는 복사)으로써 보안성이 떨어지고 관리가 번거로움
+Docker 를 사용하는 이유 :
+* 가벼운 프로세스 구동
+* 환경 설정 용이
 
-AWS EC2 OS 와 로컬 OS 가 다른 체제여서 CLI 프로그램 등을 설치하여 사용해야 하는 번거로움
-
-Jupyter Notebook 을 사용하는 이유 :
-* EC2 접속 관련 정보 메모 불필요
-* 파일 관리 및 구조 가독성 우수
-* AWS 인증 키 관리 용이
-* 로컬 운영체제와 별개로 타 운영체제 사용 가능
-
-*Jupyter Notebook 외 다른 프로그램 또는 그 외 방법들도 있겠지만, Jupyter Notebook 프로그램을 써보는 것도 추천*
+*Docker 외 다른 프로그램 또는 그 외 방법들도 있겠지만, Docker 프로그램을 써보는 것도 추천*
 
 ### Official Website
 
 공식 사이트 또는 관련 정보를 미리 숙지하고 사용할 것을 권장
 
-* [Project Jupyter](https://jupyter.org/)
+* [Docker](https://www.docker.com/)
 
 ### Built with
 
 #### Required
 
-- [x] [Jupyter Notebook](https://jupyter.org/)
+- [x] [Docker](https://www.docker.com/)
 
-  jupyter-notebook : 6.0.3
+  Docker version 19.03.6
 
 - [x] [AWS](https://aws.amazon.com/ko/) EC2 Instance
 
   \[Free tier\] Ubuntu Server 18.04 LTS (HVM), SSD Volume Type
-
-- [x] [Python](https://www.python.org/)
-
-  Python 3.6.9
-
-  *Ubuntu Server 18.04 LTS 에 기본적으로 설치되어 있음*
-
-- [x] [Google Chrome Browser](https://www.google.com/intl/ko/chrome/)
-
-  Version 80.0.3987.122 (Official Build) (64-bit)
-
-#### Optional
-
-- [ ] [OpenSSL](https://www.openssl.org/)
-
-  OpenSSL 1.1.1  11 Sep 2018
-
-  *Ubuntu Server 18.04 LTS 에 기본적으로 설치되어 있음*
 
 
 
@@ -133,7 +109,7 @@ Jupyter Notebook 을 사용하는 이유 :
 
 ## Getting Started
 
-Jupyter Notebook 을 설치는 터미널을 이용하여 명령어를 입력하는 작업이 많으므로 진행 순서와 오탈자에 주의
+Docker 설치는 터미널을 이용하여 명령어를 입력하는 작업이 많으므로 진행 순서와 오탈자에 주의
 
 *본 작업을 진행에 앞서 프로그램을 설치할 대상 서버는 반드시 백업 완료 후 진행할 것을 권장*
 
