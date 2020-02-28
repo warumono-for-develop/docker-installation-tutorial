@@ -189,182 +189,11 @@ your-terminal> sudo systemctrl status docker
 
 ## Usage
 
-정상적으로 Docker 설치 및 설정이 완료되었다면 실행하여 Sample 구동
-
-Docker 공식 사이트에서 제공하는 샘플(?) image `hello-world` 를 다운로드하여 구동하는 것으로 Docker 기본 사용방법을 연습
+정상적으로 Docker 설치 및 설정이 완료되었다면 실행하여 Docker 공식 사이트에서 제공하는 샘플(?) image `hello-world` 를 다운로드하여 구동하는 것으로 Docker 기본 사용방법 연습
 
 Docker 명령어는 공식 사이트 또는 인터넷 등으로 미리 숙지하고 사용하는 것을 권장
 
-다음 명령어와 같이 모든 명령어의 뒤에 `--help` 를 입력하면 해당 명령어의 사용법이 표기 됨
-
-```sh
-your-terminal> docker xxxx --help
-```
-
-### Docker command
-
-[Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/)
-
-> # About image
-
-<blockquote>
-
-> # 보유 이미지 목록 조회
-
-<blockquote>
-
-*docker* **images**
-
-```sh
-your-terminal> docker images
-```
-
-</blockquote>
-
-> # 이미지 이름 조회
-
-<blockquote>
-
-*docker* **search {your-docker-image-name-search-keyword}**
-
-```sh
-your-terminal> docker search hello
-```
-
-</blockquote>
-
-> # 이미지 다운로드
-
-<blockquote>
-
-*docker* **pull {your-docker-image-name}:{your-docker-image-version}**
-
-```sh
-your-terminal> docker pull hello-world:latest
-
-your-terminal> docker pull hello-world:0.1.9
-```
-
-</blockquote>
-
-> # 이미지 삭제
-
-<blockquote>
-
-*docker* **rmi {your-docker-image-id}**
-
-```sh
-your-terminal> docker rmi 1f1b68f35fa5
-```
-
-</blockquote>
-
-> # 이미지 전체 삭제
-
-<blockquote>
-
-docker rmi \`docker images\`
-
-```sh
-your-terminal> docker rmi \`docker images\`
-```
-
-</blockquote>
-
-#### About container
-
-보유 컨테이너 목록 조회
-
-docker ps \[-a\]
-
-\[-a\]
-
-|옵션|설명|형식|예시|
-|---|---|---|---|
-|-a|all. 중지되었거나 구동중인 모든 컨테이너 포함|N/A|-a|
-
-```sh
-your-terminal> docker ps
-
-your-terminal> docker ps -a
-```
-
-컨테이너 실행
-
-```sh
-your-terminal> docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
-```
-
-\[options\]
-
-|옵션|설명|형식|예시|
-|---|---|---|---|
-|-d|detached mode. 백그라운드 모드|N/A|-d|
-|-p|port. 호스트와 컨테이너의 포트를 연결 (포워딩)|호스트 포트:컨테이너 포트| -p 9090:8080 |
-|-v|volume. 호스트와 컨테이너의 디렉토리를 연결 (마운트)|호스트 디렉토리 경로:컨테이너 디렉토리 경로|-v /your/dir/path:/var/www/http|
-|-e|enviroment. 컨테이너 내에서 사용할 환경변수 설정|...|...|
-|--name|컨테이너 이름 설정|컨테이너 이름|a-container thecontainer|
-|--it|컨테이너의 표준 입력과 로컬 컴퓨터의 키보드 입력을 연결|N/A|-it|
-|--rm|remove. 프로세스 종료시 컨테이너 자동 제거|컨테이너 ID|--rm 1f1b68f35fa5|
-|--link|컨테이너 연결|컨테이너 이름:별칭|a-container:mycontainer|
-
-컨테이너 시작
-
-docker start {your-docker-container-id-or-name}
-
-```sh
-your-terminal> docker start 1f1b68f35fa5
-
-your-terminal> docker start hello-world
-```
-
-컨테이너 재시작
-
-docker restart {your-docker-container-id-or-name}
-
-```sh
-your-terminal> docker restart 1f1b68f35fa5
-
-your-terminal> docker restart hello-world
-```
-
-컨테이너 접속
-
-docker attach {your-docker-container-id-or-name}
-
-```sh
-your-terminal> docker attach 1f1b68f35fa5
-
-your-terminal> docker attach hello-world
-```
-
-컨테이너 중지
-
-docker stop {your-docker-container-id-or-name}
-
-```sh
-your-terminal> docker stop 1f1b68f35fa5
-
-your-terminal> docker stop hello-world
-```
-
-`exit` 을 입력하거나 `control + D` 를 누르면 **컨테이너를 중지시킬 수 있음**
-
-`control + P` ---> `control + Q` 를 순서대로 누르면 **컨테이너를 중지시키지 않을 수 있음**
-
-
-sudo 입력없이 명령어 사용할 수 있는 팁
-
-Case 1
-현재 접속중인 사용자에게 sudo 권한 부여
-
-your-terminal> sudo usermod -aG docker $USER
-
-Case 2
-임의의 사용자에게 sudo 권한 부여
-your-terminal> sudo usermod -aG docker {your-user}
-
-
+본 설명글에는 *[자주 사용하는 명령어](#docker-command)* 를 간략하게 설명하였으니 참고하여 숙지하고 연습하기 권장
 
 #### Pull image
 
@@ -454,6 +283,210 @@ docker **rmi** `{your-docker-container-id}`
 ```sh
 your-terminal> docker rmi hello-world
 ```
+
+
+
+<!-- ATTACH -->
+
+
+
+### Docker command
+
+[Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/)
+
+모든 명령어의 뒤에 `--help` 를 입력하면 해당 명령어의 사용법이 표기 됨
+
+```sh
+your-terminal> docker xxxx --help
+```
+
+> # About image
+
+<blockquote>
+
+> # 보유 이미지 목록 조회
+
+<blockquote>
+
+*docker* **images**
+
+```sh
+your-terminal> docker images
+```
+
+</blockquote>
+
+> # 이미지 이름 조회
+
+<blockquote>
+
+*docker* **search {your-docker-image-name-search-keyword}**
+
+```sh
+your-terminal> docker search hello
+```
+
+</blockquote>
+
+> # 이미지 다운로드
+
+<blockquote>
+
+*docker* **pull {your-docker-image-name}:{your-docker-image-version}**
+
+```sh
+your-terminal> docker pull hello-world:latest
+
+your-terminal> docker pull hello-world:0.1.9
+```
+
+</blockquote>
+
+> # 이미지 삭제
+
+<blockquote>
+
+*docker* **rmi {your-docker-image-id}**
+
+```sh
+your-terminal> docker rmi 1f1b68f35fa5
+```
+
+</blockquote>
+
+> # 이미지 전체 삭제
+
+<blockquote>
+
+docker rmi \`docker images\`
+
+```sh
+your-terminal> docker rmi \`docker images\`
+```
+
+</blockquote>
+
+> # About container
+
+<blockquote>
+
+보유 컨테이너 목록 조회
+
+docker ps \[-a\]
+
+\[-a\]
+
+|옵션|설명|형식|예시|
+|---|---|---|---|
+|-a|all. 중지되었거나 구동중인 모든 컨테이너 포함|N/A|-a|
+
+```sh
+your-terminal> docker ps
+
+your-terminal> docker ps -a
+```
+
+</blockquote>
+
+> # 컨테이너 실행
+
+<blockquote>
+  
+docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
+
+```sh
+your-terminal> docker run --rm -d -p 9090:8080 hello-api --name api
+```
+
+\[options\]
+
+|옵션|설명|형식|예시|
+|---|---|---|---|
+|-d|detached mode. 백그라운드 모드|N/A|-d|
+|-p|port. 호스트와 컨테이너의 포트를 연결 (포워딩)|호스트 포트:컨테이너 포트| -p 9090:8080 |
+|-v|volume. 호스트와 컨테이너의 디렉토리를 연결 (마운트)|호스트 디렉토리 경로:컨테이너 디렉토리 경로|-v /your/dir/path:/var/www/http|
+|-e|enviroment. 컨테이너 내에서 사용할 환경변수 설정|...|...|
+|--name|컨테이너 이름 설정|컨테이너 이름|a-container thecontainer|
+|--it|컨테이너의 표준 입력과 로컬 컴퓨터의 키보드 입력을 연결|N/A|-it|
+|--rm|remove. 프로세스 종료시 컨테이너 자동 제거|컨테이너 ID|--rm 1f1b68f35fa5|
+|--link|컨테이너 연결|컨테이너 이름:별칭|a-container:mycontainer|
+
+<blockquote>
+
+> # 컨테이너 시작
+
+<blockquote>
+
+docker start {your-docker-container-id-or-name}
+
+```sh
+your-terminal> docker start 1f1b68f35fa5
+
+your-terminal> docker start hello-world
+```
+
+</blockquote>
+
+> # 컨테이너 재시작
+
+<blockquote>
+
+docker restart {your-docker-container-id-or-name}
+
+```sh
+your-terminal> docker restart 1f1b68f35fa5
+
+your-terminal> docker restart hello-world
+```
+
+</blockquote>
+
+> # 컨테이너 접속
+
+<blockquote>
+
+docker attach {your-docker-container-id-or-name}
+
+```sh
+your-terminal> docker attach 1f1b68f35fa5
+
+your-terminal> docker attach hello-world
+```
+
+</blockquote>
+
+> # 컨테이너 중지
+
+<blockquote>
+
+docker stop {your-docker-container-id-or-name}
+
+```sh
+your-terminal> docker stop 1f1b68f35fa5
+
+your-terminal> docker stop hello-world
+```
+
+`exit` 을 입력하거나 `control + D` 를 누르면 **컨테이너를 중지시킬 수 있음**
+
+`control + P` ---> `control + Q` 를 순서대로 누르면 **컨테이너를 중지시키지 않을 수 있음**
+
+</blockquote>
+
+> # sudo 입력없이 명령어 사용할 수 있는 팁
+
+<blockquote>
+
+Case 1
+현재 접속중인 사용자에게 sudo 권한 부여
+
+your-terminal> sudo usermod -aG docker $USER
+
+Case 2
+임의의 사용자에게 sudo 권한 부여
+your-terminal> sudo usermod -aG docker {your-user}
+
+</blockquote>
 
 
 
