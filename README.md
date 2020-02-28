@@ -101,6 +101,12 @@ Docker 를 사용하는 이유 :
 
   \[Free tier\] Ubuntu Server 18.04 LTS (HVM), SSD Volume Type
 
+#### Optional
+
+- [ ] [Jupyter Notebook](https://jupyter.org/)
+
+  [Jupyter Notebook Installation Tutorial](https://github.com/warumono-for-develop/jupyter-notebook-installation-tutorial)
+
 
 
 <!-- GETTING STARTED -->
@@ -131,142 +137,48 @@ Docker 설치는 터미널을 이용하여 명령어를 입력하는 작업이 �
 
 기존 AWS EC2 인스턴스 또는 새로운 인스턴스를 생성하여 정상적으로 구동중인 서버
 
-#### AWS EC2 인스턴스 **내부 IP** 정보
-
-AWS EC2 인스턴스의 상세 정보 중 `Private IPs`
-
-*Private IPs 정보는 터미널의 명령어를 이용하여도 확인 가능*
-
-```sh
-your-terminal> ifconfig
-```
-
-#### AWS EC2 인스턴스의 **보안 그룹 설정**
-
-AWS EC2 인스턴스에 적용되어 있는 보안 그룹으로 이동하여 Inbound 에 Jupyter Notebook 에 접속할 URL 의 PORT 추가
-
-#### OpenSSL **사설 인증서**
-
-SSL 을 사용하지 않아도 Jupyter Notebook 을 사용하는데 문제는 없으나 보안성을 높이기 위하여 사용하는 것을 권장
-
-*정상적으로 발급받은 인증서를 사용할 것을 권장*
-
-```sh
-your-terminal> cd ~
-
-your-terminal> mkdir {your-ssl-file-directory-name}
-
-your-terminal> cd {your-ssl-file-directory-name}
-
-your-terminal> sudo openssl req -x509 -nodes -days {your-valid-day-count} -newkey rsa:1024 -keyout "{your-private-cert-file-name}.key" -out "{your-public-cert-file-name}.pem" -batch
-
-your-terminal> ls
-
-{your-private-cert-file-name}.key  {your-public-cert-file-name}.pem
-```
-
 ### Installation
 
 #### Step 1
 
-##### python3-pip 프로그램 설치
+##### Plugin 설치
 
 ```sh
-your-terminal> sudo apt-get update
-...
+your-terminal> sudo apt update
 
-your-terminal> sudo apt-get install python3-pip
-...
+your-terminal> sudo apt install apt-transport-https
+
+your-terminal> sudo install ca-certificates
+
+your-terminal> sudo install curl
+
+your-terminal> sudo install software-properties-common
+
+your-terminal> curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+
+your-terminal> sudo add-apt-repository "deb [arch=amd64] https://download.docker.com/linux/ubuntu bionic stable"
+
+your-terminal> sudo apt update
 ```
 
 #### Step 2
 
-##### Jupyter Notebook 설치
+##### Docker 설치
 
 ```sh
-your-terminal> sudo pip3 install notebook
-...
+your-terminal> apt-cache policy docker-ce
+
+your-terminal> sudo apt install docker-ce
 ```
 
 #### Step 3
 
-##### Jupyter Notebook 비밀번호 설정
+##### Docker 상태 확인
 
-정상적으로 입력한 **`비밀번호에 따른 해시 값`**이 나오면 이 해시 값을 **`메모하여 이 후 설정 단계에서 사용`**
-
-*비밀번호 설정 완료 후, **_`control + Z`_** 키를 눌러 python3 에서 나옴*
+*상태 확인 후, **_`control + C`_** 키를 눌러 python3 에서 나옴*
     
 ```sh
-your-terminal> python3
-
-Python 3.6.5 ...
-.....
->> from from notebook.auth import passwd
-
->> passwd()
-
-Enter password:
-
-Verify password:
-
-'sha1:{auto-password-hash-value}'
-```
-
-#### Step 4
-
-##### Jupyter Notebook 설정 파일 생성 및 편집
-
-정상적으로 설정 파일이 생성되면 해당 파일의 경로가 표시 됨
-
-*생성된 설정 파일에는 Jupyter Notebook 기본 설정 정보가 있음*
-
-```sh
-your-terminal> cd ~
-
-your-terminal> jupyter notebook --generate-config
-
-Writing default config to: /home/ubuntu/.jupyter/jupyter_notebook_config.py
-
-your-terminal> sudo vi ~/.jupyter/jupyter_notebook_config.py
-```
-
-*jupyter_notebook_config.py* 내용
-
-*설정 파일 기존 내용의 마지막 아래에 추가 입력*
-
-*설정 파일 편집을 완료하였다면, 저장 (esc 키 입력 후 wq! 를 입력)*
-
-```sh
-...
-# ============================================================
-# your comment
-# ============================================================
-
-c = get_config()
-
-c.NotebookApp.password = u'{auto-password-hash-value}'
-
-c.NotebookApp.ip = '{your-aws-ec2-private-ip}'
-
-c.NotebookApp.notebook_dir = '{your-aws-ec2-begin-path}'
-
-c.NotebookApp.keyfile = u'{your-private-cert-file-name.key-full-path}'
-
-c.NotebookApp.certfile = u'{your-public-cert-file-name.pem-full-path}'
-```
-
-#### Step 5
-
-##### Jupyter Notebook 백그라운드 실행 설정
-
-정상적으로 Jupyter Notebook 의 설치 및 설정이 완료된 후 터미널을 이용하여 실행하고, 해당 터미널을 닫거나 임의로 끊기는 경우에는 Jupyter Notebook 프로그램도 중지가 되므로 이를 방지하기 위하여 **`백그라운드에서 실행되도록 설정`**해야 함
-
-```sh
-your-terminal> bg
-
-[3]+ sudo jupyter-notebook --allow-root &
-
-your-terminal> disown -h
+your-terminal> sudo systemctrl status docker
 ```
 
 
@@ -277,32 +189,51 @@ your-terminal> disown -h
 
 ## Usage
 
-정상적으로 Jupyter Notebook 설치 및 설정이 완료되었다면 실행하여 웹 브라우져로 접근 후 확인
+정상적으로 Docker 설치 및 설정이 완료되었다면 실행하여 Sample 구동
 
-#### Run Jupyter Notebook
+Docker 공식 사이트에서 제공하는 샘플(?) image `hello-world` 를 다운로드하여 구동하는 것으로 Docker 기본 사용방법을 연습
+
+#### Pull image
 
 ```sh
-your-terminal> sudo jupyter-notebook --allow-root
-...
-[...] https://{auto-jupyter-notebook-url}:{your-jupyter-notebook-port}/
-...
+your-terminal> docker pull hello-world
 ```
 
-#### Connect to Jupyter Notebook
+#### List images in local Docker
 
-Google Chrome 브라우져를 실행하고 URL 입력 창에 **_`https://{auto-jupyter-notebook-url}:{your-jupyter-notebook-port}/`_** 를 입력하여 접속
+```sh
+your-terminal> docker images
 
-Google Chrome 브라우져의 경우 알 수 없는 인증기관에서 발급된 사설인증서를 이용한 사이트 접근을 우선적으로 방지하고 있어 `경고 화면`이 나오게 됨
+REPOSITORY                     TAG                 IMAGE ID            CREATED             SIZE
+hello-world                    latest              fce289e99eb9        14 months ago       1.84kB
+```
 
-이 경우, 경고 화면에서 어떠한 동작도 하지 않고 **_`thisisunsafe`_** 문자를 키보드로 입력하면 Jupyter Notebook 화면으로 접근 가능
+#### Run container
 
-#### Jupyter Notebook Dashboard
+```sh
+your-terminal> docker run hello-world
 
-  *Jupyter 공식 웹사이트의 예시 화면*
+Hello from Docker!
+This message shows that your installation appears to be working correctly.
 
-  예시 화면의 오른쪽 위 **`New`** 버튼을 눌러 Drop Down 메뉴 중 **`Terminal`** 을 선택하면 새 브라우져 창(또는 새 탭)으로 터미널 화면이 나옴 
+To generate this message, Docker took the following steps:
+ 1. The Docker client contacted the Docker daemon.
+ 2. The Docker daemon pulled the "hello-world" image from the Docker Hub.
+    (amd64)
+ 3. The Docker daemon created a new container from that image which runs the
+    executable that produces the output you are currently reading.
+ 4. The Docker daemon streamed that output to the Docker client, which sent it
+    to your terminal.
 
-  ![Jupyter Notebook Dashboard](https://jupyter.readthedocs.io/en/latest/_images/tryjupyter_file.png)
+To try something more ambitious, you can run an Ubuntu container with:
+ $ docker run -it ubuntu bash
+
+Share images, automate workflows, and more with a free Docker ID:
+ https://hub.docker.com/
+
+For more examples and ideas, visit:
+ https://docs.docker.com/get-started/
+```
 
 
 
@@ -312,7 +243,7 @@ Google Chrome 브라우져의 경우 알 수 없는 인증기관에서 발급된
 
 ## Roadmap
 
-See the [open issues](https://github.com/warumono-for-develop/jupyter-notebook-installation-tutorial/issues) for a list of proposed features (and known issues).
+See the [open issues](https://github.com/warumono-for-develop/docker-installation-tutorial/issues) for a list of proposed features (and known issues).
 
 
 
