@@ -209,15 +209,15 @@ your-terminal> docker xxxx --help
 
 보유 이미지 목록 조회
 
+*docker* **images**
+
 ```sh
 your-terminal> docker images
 ```
 
 이미지 이름 조회
 
-```sh
-your-terminal> docker search {your-docker-image-name-search-keyword}
-```
+*docker* **search {your-docker-image-name-search-keyword}**
 
 ```sh
 your-terminal> docker search hello
@@ -225,9 +225,7 @@ your-terminal> docker search hello
 
 이미지 다운로드
 
-```sh
-your-terminal> docker pull {your-docker-image-name}:{your-docker-image-version}
-```
+*docker* **pull {your-docker-image-name}:{your-docker-image-version}**
 
 ```sh
 your-terminal> docker pull hello-world:latest
@@ -237,15 +235,15 @@ your-terminal> docker pull hello-world:0.1.9
 
 이미지 삭제
 
-```sh
-your-terminal> docker rmi {your-docker-image-id}
-```
+*docker* **rmi {your-docker-image-id}**
 
 ```sh
 your-terminal> docker rmi 1f1b68f35fa5
 ```
 
 이미지 전체 삭제
+
+docker rmi \`docker images\`
 
 ```sh
 your-terminal> docker rmi \`docker images\`
@@ -255,8 +253,18 @@ your-terminal> docker rmi \`docker images\`
 
 보유 컨테이너 목록 조회
 
+docker ps \[-a\]
+
+\[-a\]
+
+|옵션|설명|형식|예시|
+|---|---|---|
+|-a|all. 중지되었거나 구동중인 모든 컨테이너 포함|-a|-a|
+
 ```sh
-your-terminal> docker ps [-a]
+your-terminal> docker ps
+
+your-terminal> docker ps -a
 ```
 
 컨테이너 실행
@@ -264,6 +272,8 @@ your-terminal> docker ps [-a]
 ```sh
 your-terminal> docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
 ```
+
+\[options\]
 
 |옵션|설명|형식|예시|
 |---|---|---|
@@ -278,9 +288,7 @@ your-terminal> docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
 
 컨테이너 시작
 
-```sh
-your-terminal> docker start {your-docker-container-id-or-name}
-```
+docker start {your-docker-container-id-or-name}
 
 ```sh
 your-terminal> docker start 1f1b68f35fa5
@@ -290,43 +298,31 @@ your-terminal> docker start hello-world
 
 컨테이너 재시작
 
-```sh
-your-terminal> docker restart {your-docker-container-id-or-name}
-```
+docker restart {your-docker-container-id-or-name}
 
 ```sh
 your-terminal> docker restart 1f1b68f35fa5
-```
 
-```sh
 your-terminal> docker restart hello-world
 ```
 
 컨테이너 접속
 
-```sh
-your-terminal> docker attach {your-docker-container-id-or-name}
-```
+docker attach {your-docker-container-id-or-name}
 
 ```sh
 your-terminal> docker attach 1f1b68f35fa5
-```
 
-```sh
 your-terminal> docker attach hello-world
 ```
 
 컨테이너 중지
 
-```sh
-your-terminal> docker stop {your-docker-container-id-or-name}
-```
+docker stop {your-docker-container-id-or-name}
 
 ```sh
 your-terminal> docker stop 1f1b68f35fa5
-```
 
-```sh
 your-terminal> docker stop hello-world
 ```
 
@@ -345,8 +341,6 @@ your-terminal> sudo usermod -aG docker $USER
 Case 2
 임의의 사용자에게 sudo 권한 부여
 your-terminal> sudo usermod -aG docker {your-user}
-
-
 
 
 
