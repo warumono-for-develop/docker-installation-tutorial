@@ -205,9 +205,13 @@ your-terminal> docker xxxx --help
 
 [Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/)
 
-# About image
+> # About image
 
-보유 이미지 목록 조회
+<blockquote>
+
+> # 보유 이미지 목록 조회
+
+<blockquote>
 
 *docker* **images**
 
@@ -215,7 +219,11 @@ your-terminal> docker xxxx --help
 your-terminal> docker images
 ```
 
-이미지 이름 조회
+</blockquote>
+
+> # 이미지 이름 조회
+
+<blockquote>
 
 *docker* **search {your-docker-image-name-search-keyword}**
 
@@ -223,7 +231,11 @@ your-terminal> docker images
 your-terminal> docker search hello
 ```
 
-이미지 다운로드
+</blockquote>
+
+> # 이미지 다운로드
+
+<blockquote>
 
 *docker* **pull {your-docker-image-name}:{your-docker-image-version}**
 
@@ -233,7 +245,11 @@ your-terminal> docker pull hello-world:latest
 your-terminal> docker pull hello-world:0.1.9
 ```
 
-이미지 삭제
+</blockquote>
+
+> # 이미지 삭제
+
+<blockquote>
 
 *docker* **rmi {your-docker-image-id}**
 
@@ -241,7 +257,11 @@ your-terminal> docker pull hello-world:0.1.9
 your-terminal> docker rmi 1f1b68f35fa5
 ```
 
-이미지 전체 삭제
+</blockquote>
+
+> # 이미지 전체 삭제
+
+<blockquote>
 
 docker rmi \`docker images\`
 
@@ -249,7 +269,9 @@ docker rmi \`docker images\`
 your-terminal> docker rmi \`docker images\`
 ```
 
-# About container
+</blockquote>
+
+#### About container
 
 보유 컨테이너 목록 조회
 
@@ -258,8 +280,8 @@ docker ps \[-a\]
 \[-a\]
 
 |옵션|설명|형식|예시|
-|---|---|---|
-|-a|all. 중지되었거나 구동중인 모든 컨테이너 포함|-a|-a|
+|---|---|---|---|
+|-a|all. 중지되었거나 구동중인 모든 컨테이너 포함|N/A|-a|
 
 ```sh
 your-terminal> docker ps
@@ -276,14 +298,14 @@ your-terminal> docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
 \[options\]
 
 |옵션|설명|형식|예시|
-|---|---|---|
-|-d|detached mode. 백그라운드 모드|-d|-d|
+|---|---|---|---|
+|-d|detached mode. 백그라운드 모드|N/A|-d|
 |-p|port. 호스트와 컨테이너의 포트를 연결 (포워딩)|호스트 포트:컨테이너 포트| -p 9090:8080 |
 |-v|volume. 호스트와 컨테이너의 디렉토리를 연결 (마운트)|호스트 디렉토리 경로:컨테이너 디렉토리 경로|-v /your/dir/path:/var/www/http|
 |-e|enviroment. 컨테이너 내에서 사용할 환경변수 설정|...|...|
 |--name|컨테이너 이름 설정|컨테이너 이름|a-container thecontainer|
-|--it|컨테이너의 표준 입력과 로컬 컴퓨터의 키보드 입력을 연결|-it|-it|
-|--rm|remove. 프로세스 종료시 컨테이너 자동 제거|--rm 컨테이너 ID|--rm 1f1b68f35fa5|
+|--it|컨테이너의 표준 입력과 로컬 컴퓨터의 키보드 입력을 연결|N/A|-it|
+|--rm|remove. 프로세스 종료시 컨테이너 자동 제거|컨테이너 ID|--rm 1f1b68f35fa5|
 |--link|컨테이너 연결|컨테이너 이름:별칭|a-container:mycontainer|
 
 컨테이너 시작
