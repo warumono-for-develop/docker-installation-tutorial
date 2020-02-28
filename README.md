@@ -216,39 +216,39 @@ your-terminal> docker images
 이미지 이름 조회
 
 ```sh
-docker search {your-docker-image-name-search-keyword}
+your-terminal> docker search {your-docker-image-name-search-keyword}
 ```
 
 ```sh
-docker search hello
+your-terminal> docker search hello
 ```
 
 이미지 다운로드
 
 ```sh
-docker pull {your-docker-image-name}:{your-docker-image-version}
+your-terminal> docker pull {your-docker-image-name}:{your-docker-image-version}
 ```
 
 ```sh
-docker pull hello-world:latest
+your-terminal> docker pull hello-world:latest
 
-docker pull hello-world:0.1.9
+your-terminal> docker pull hello-world:0.1.9
 ```
 
 이미지 삭제
 
 ```sh
-docker rmi {your-docker-image-id}
+your-terminal> docker rmi {your-docker-image-id}
 ```
 
 ```sh
-docker rmi 1f1b68f35fa5
+your-terminal> docker rmi 1f1b68f35fa5
 ```
 
 이미지 전체 삭제
 
 ```sh
-docker rmi \`docker images\`
+your-terminal> docker rmi \`docker images\`
 ```
 
 # About container
@@ -278,26 +278,73 @@ your-terminal> docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
 
 컨테이너 시작
 
-docker start {your-docker-container-id-or-name}
+```sh
+your-terminal> docker start {your-docker-container-id-or-name}
+```
+
+```sh
+your-terminal> docker start 1f1b68f35fa5
+
+your-terminal> docker start hello-world
+```
 
 컨테이너 재시작
 
-docker restart {your-docker-container-id-or-name}
+```sh
+your-terminal> docker restart {your-docker-container-id-or-name}
+```
+
+```sh
+your-terminal> docker restart 1f1b68f35fa5
+```
+
+```sh
+your-terminal> docker restart hello-world
+```
+
+컨테이너 접속
+
+```sh
+your-terminal> docker attach {your-docker-container-id-or-name}
+```
+
+```sh
+your-terminal> docker attach 1f1b68f35fa5
+```
+
+```sh
+your-terminal> docker attach hello-world
+```
+
+컨테이너 중지
+
+```sh
+your-terminal> docker stop {your-docker-container-id-or-name}
+```
+
+```sh
+your-terminal> docker stop 1f1b68f35fa5
+```
+
+```sh
+your-terminal> docker stop hello-world
+```
+
+`exit` 을 입력하거나 `control + D` 를 누르면 **컨테이너를 중지시킬 수 있음**
+
+`control + P` ---> `control + Q` 를 순서대로 누르면 **컨테이너를 중지시키지 않을 수 있음**
 
 
+sudo 입력없이 명령어 사용할 수 있는 팁
 
-docker attach {your-docker-container-id-or-name}
+Case 1
+현재 접속중인 사용자에게 sudo 권한 부여
 
-docker stop {your-docker-container-id-or-name}
+your-terminal> sudo usermod -aG docker $USER
 
-Bash Shell에서 exit 또는 Ctrl + D를 입력하면 컨테이너가 정지된다.
-
-Ctrl + P, Ctrl + Q를 차례대로 입력하여 컨테이너를 정지하지 않고, 컨테이너에서 빠져나온다.
-
-sudo 없이 Linux 명령어 쓰기
-$ sudo usermod -aG docker $USER # 현재 접속중인 사용자에게 권한주기
-
-$ sudo usermod -aG docker your-user # your-user 사용자에게 권한주기
+Case 2
+임의의 사용자에게 sudo 권한 부여
+your-terminal> sudo usermod -aG docker {your-user}
 
 
 
