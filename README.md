@@ -322,6 +322,24 @@ your-terminal> docker rmi hello-world
 your-terminal> docker xxxx --help
 ```
 
+<!--
+<details>
+  <summary>
+    <i>Collapsible Link </i>
+    <a href="https://your-reference-url">Reference Link</a>
+  </summary>
+  <p>
+    your contents
+  </p>
+</details>
+-->
+
+<details>
+  <summary>
+    <i>View document </i>
+    <a href="https://docs.docker.com/engine/reference/commandline/cli/">Use the Docker command line</a>
+  </summary>
+
 > ## About image
 
 <blockquote>
@@ -515,6 +533,8 @@ your-terminal> sudo usermod -aG docker {your-user}
 </blockquote>
 
 </blockquote>
+
+</details>
 
 
 
