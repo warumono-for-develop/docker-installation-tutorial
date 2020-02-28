@@ -175,7 +175,7 @@ your-terminal> sudo apt install docker-ce
 
 ##### Docker 상태 확인
 
-*상태 확인 후, **_`control + C`_** 키를 눌러 python3 에서 나옴*
+*상태 확인 후, **_`control + C`_** 키를 눌러 Docker 에서 나옴*
     
 ```sh
 your-terminal> sudo systemctrl status docker
@@ -193,13 +193,31 @@ your-terminal> sudo systemctrl status docker
 
 Docker 공식 사이트에서 제공하는 샘플(?) image `hello-world` 를 다운로드하여 구동하는 것으로 Docker 기본 사용방법을 연습
 
+Docker 명령어는 공식 사이트 또는 인터넷 등으로 미리 숙지하고 사용하는 것을 권장
+
+다음 명령어와 같이 모든 명령어의 뒤에 `--help` 를 입력하면 해당 명령어의 사용법이 표기 됨
+
+```sh
+your-terminal> docker xxxx --help
+```
+
 #### Pull image
+
+Docker Hub 에 등록되어 공개되어 있는 image 를 검색하는 명령어
+
+docker **search** `{your-docker-image-name-search-keyword}`
+
+Docker Hub 로 부터 해당 image 를 로컬 저장소로 다운로드 하는 명령어
+
+docker **pull** `{your-docker-image-name}`
 
 ```sh
 your-terminal> docker pull hello-world
 ```
 
 #### List images in local Docker
+
+docker images
 
 ```sh
 your-terminal> docker images
@@ -209,6 +227,8 @@ hello-world                    latest              fce289e99eb9        14 months
 ```
 
 #### Run container
+
+docker **run** `{your-docker-image-name}`
 
 ```sh
 your-terminal> docker run hello-world
@@ -233,6 +253,45 @@ Share images, automate workflows, and more with a free Docker ID:
 
 For more examples and ideas, visit:
  https://docs.docker.com/get-started/
+```
+
+`hello-world` 프로그램은 구동된 후에 서버가 임의의 작동을 완료되면 프로그램을 종료하는 방식이 아닌, **사용자가 중지시키기전까지 연속적으로 구동되고 있어야 하는 프로그램**(API 서버 등)은 옵션 명령어 `-d` 를 사용
+
+```sh
+your-terminal> docker run -d -p 9090:8080 `{your-docker-image-name}`
+```
+
+#### List containers in Docker
+
+docker **ps -a**
+
+```
+your-terminal> docker ps -a
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
+d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
+```
+
+#### Stop container
+
+docker **stop** `{your-docker-container-id}`
+
+```
+your-terminal> docker stop hello-world
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
+d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
+```
+
+#### Stop container
+
+docker **stop** `{your-docker-container-id}`
+
+```
+your-terminal> docker stop hello-world
+
+CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
+d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
 ```
 
 
