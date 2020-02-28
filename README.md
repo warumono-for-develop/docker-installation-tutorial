@@ -50,15 +50,19 @@
   * [References](#references)
   * [Prerequisites](#prerequisites)
   * [Installation](#installation)
-    * [Step 1 python3-pip 프로그램 설치](#step-1)
-    * [Step 2 Jupyter Notebook 설치](#step-2)
-    * [Step 3 Jupyter Notebook 비밀번호 설정](#step-3)
-    * [Step 4 Jupyter Notebook 설정 파일 생성 및 편집](#step-4)
-    * [Step 6 Jupyter Notebook 백그라운드 실행 설정](#step-5)
+    * [Step 1 Plugin 설치](#step-1)
+    * [Step 2 Docker 설치](#step-2)
+    * [Step 3 Docker 상태 확인](#step-3)
 * [Usage](#usage)
-  * [Run Jupyter Notebook](#run-jupyter-notebook)
-  * [Connect to Jupyter Notebook](#connect-to-jupyter-notebook)
-  * [Jupyter Notebook Dashboard](#jupyter-notebook-dashboard)
+  * [Step 1 Pull image](#step-1)
+  * [Step 2 List images in local Docker](#step-2)
+  * [Step 3 Run container](#step-3)
+  * [Step 4 List containers in Docker](#step-4)
+  * [Step 5 Stop container](#step-5)
+  * [Step 6 Remove container](#step-6)
+  * [Step 7 Remove image](#step-7)
+* [Attach](#attach)
+  * [Docker command](#docker-command)
 * [Roadmap](#roadmap)
 * [Contributing](#contributing)
 * [License](#license)
@@ -195,7 +199,9 @@ Docker 명령어는 공식 사이트 또는 인터넷 등으로 미리 숙지하
 
 본 설명글에는 *[자주 사용하는 명령어](#docker-command)* 를 간략하게 설명하였으니 참고하여 숙지하고 연습하기 권장
 
-#### Pull image
+#### Step 1
+
+##### Pull image
 
 Docker Hub 에 등록되어 공개되어 있는 image 를 검색하는 명령어
 
@@ -209,7 +215,9 @@ docker **pull** `{your-docker-image-name}`
 your-terminal> docker pull hello-world
 ```
 
-#### List images in local Docker
+#### Step 2
+
+##### List images in local Docker
 
 docker images
 
@@ -220,7 +228,9 @@ REPOSITORY                     TAG                 IMAGE ID            CREATED  
 hello-world                    latest              fce289e99eb9        14 months ago       1.84kB
 ```
 
-#### Run container
+#### Step 3
+
+##### Run container
 
 docker **run** `{your-docker-image-name}`
 
@@ -249,7 +259,9 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-#### List containers in Docker
+#### Step 4
+
+##### List containers in Docker
 
 docker **ps -a**
 
@@ -260,7 +272,9 @@ CONTAINER ID        IMAGE               COMMAND                  CREATED        
 d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
 ```
 
-#### Stop container
+#### Step 5
+
+##### Stop container
 
 docker **stop** `{your-docker-container-id}`
 
@@ -268,7 +282,9 @@ docker **stop** `{your-docker-container-id}`
 your-terminal> docker stop hello-world
 ```
 
-#### Remove container
+#### Step 6
+
+##### Remove container
 
 docker **rm** `{your-docker-container-id}`
 
@@ -276,7 +292,11 @@ docker **rm** `{your-docker-container-id}`
 your-terminal> docker rm hello-world
 ```
 
-#### Remove image
+#### Step 7
+
+##### Remove image
+
+임의의 이미지를 삭제하려는 경우 해당 이미지가 컨테이너에 의존되어 있고 컨테이너가 중지되었든 구동되고 있든 상관없이 **컨테이너가 존재하면 이미지 삭제 불가**
 
 docker **rmi** `{your-docker-container-id}`
 
@@ -289,6 +309,8 @@ your-terminal> docker rmi hello-world
 <!-- ATTACH -->
 
 
+
+## Attach
 
 ### Docker command
 
