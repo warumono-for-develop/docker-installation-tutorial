@@ -201,6 +201,108 @@ Docker 명령어는 공식 사이트 또는 인터넷 등으로 미리 숙지하
 your-terminal> docker xxxx --help
 ```
 
+### Docker command
+
+[Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/)
+
+# About image
+
+보유 이미지 목록 조회
+
+```sh
+your-terminal> docker images
+```
+
+이미지 이름 조회
+
+```sh
+docker search {your-docker-image-name-search-keyword}
+```
+
+```sh
+docker search hello
+```
+
+이미지 다운로드
+
+```sh
+docker pull {your-docker-image-name}:{your-docker-image-version}
+```
+
+```sh
+docker pull hello-world:latest
+
+docker pull hello-world:0.1.9
+```
+
+이미지 삭제
+
+```sh
+docker rmi {your-docker-image-id}
+```
+
+```sh
+docker rmi 1f1b68f35fa5
+```
+
+이미지 전체 삭제
+
+```sh
+docker rmi \`docker images\`
+```
+
+# About container
+
+보유 컨테이너 목록 조회
+
+```sh
+your-terminal> docker ps [-a]
+```
+
+컨테이너 실행
+
+```sh
+your-terminal> docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
+```
+
+|옵션|설명|형식|예시|
+|---|---|---|
+|-d|detached mode. 백그라운드 모드|-d|-d|
+|-p|port. 호스트와 컨테이너의 포트를 연결 (포워딩)|호스트 포트:컨테이너 포트| -p 9090:8080 |
+|-v|volume. 호스트와 컨테이너의 디렉토리를 연결 (마운트)|호스트 디렉토리 경로:컨테이너 디렉토리 경로|-v /your/dir/path:/var/www/http|
+|-e|enviroment. 컨테이너 내에서 사용할 환경변수 설정|...|...|
+|--name|컨테이너 이름 설정|컨테이너 이름|a-container thecontainer|
+|--it|컨테이너의 표준 입력과 로컬 컴퓨터의 키보드 입력을 연결|-it|-it|
+|--rm|remove. 프로세스 종료시 컨테이너 자동 제거|--rm 컨테이너 ID|--rm 1f1b68f35fa5|
+|--link|컨테이너 연결|컨테이너 이름:별칭|a-container:mycontainer|
+
+컨테이너 시작
+
+docker start {your-docker-container-id-or-name}
+
+컨테이너 재시작
+
+docker restart {your-docker-container-id-or-name}
+
+
+
+docker attach {your-docker-container-id-or-name}
+
+docker stop {your-docker-container-id-or-name}
+
+Bash Shell에서 exit 또는 Ctrl + D를 입력하면 컨테이너가 정지된다.
+
+Ctrl + P, Ctrl + Q를 차례대로 입력하여 컨테이너를 정지하지 않고, 컨테이너에서 빠져나온다.
+
+sudo 없이 Linux 명령어 쓰기
+$ sudo usermod -aG docker $USER # 현재 접속중인 사용자에게 권한주기
+
+$ sudo usermod -aG docker your-user # your-user 사용자에게 권한주기
+
+
+
+
+
 #### Pull image
 
 Docker Hub 에 등록되어 공개되어 있는 image 를 검색하는 명령어
@@ -255,30 +357,6 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
-```sh
-your-terminal> docker run --rm -d -p 9090:8080 `{your-docker-image-name}`
-```
-
-`hello-world` 프로그램은 구동된 후에 서버가 임의의 작동을 완료되면 프로그램을 종료하는 방식이 아닌, **사용자가 중지시키기전까지 연속적으로 구동되고 있어야 하는 프로그램**(API 서버 등)은 옵션 명령어 `-d` 를 사용
-
-SpringBoot API 서버 구동 명령어
-
-***_`-p 9090:8080`_*** 는 PORT 연결을 위한 옵션 명령어
-
-`-p {your-local-inbound-port}:{your-docker-container-inbound-port}`
-
-웹 브라우져 URL 입력 창에 `http://{your-domain}:{your-local-inbound-port}` 형식으로 사용
-
-```sh
-your-terminal> docker run -d -p 9090:8080 `{your-docker-image-name}`
-```
-
-또한, 구동되는 container 를 중지시키는 동시에 container 를 삭제하고자 할 경우 옵션 명령어 `--rm` 을 사용
-
-```sh
-your-terminal> docker run --rm -d -p 9090:8080 `{your-docker-image-name}`
-```
-
 #### List containers in Docker
 
 docker **ps -a**
@@ -306,24 +384,12 @@ docker **rm** `{your-docker-container-id}`
 your-terminal> docker rm hello-world
 ```
 
-모든 container 를 삭제하는 명령어
-
-```sh
-your-terminal> docker rm `docker ps -a -q`
-```
-
 #### Remove image
 
 docker **rmi** `{your-docker-container-id}`
 
 ```sh
 your-terminal> docker rmi hello-world
-```
-
-모든 image 를 삭제하는 명령어
-
-```sh
-your-terminal> docker rmi `docker images`
 ```
 
 
