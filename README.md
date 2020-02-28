@@ -261,8 +261,22 @@ your-terminal> docker run --rm -d -p 9090:8080 `{your-docker-image-name}`
 
 `hello-world` 프로그램은 구동된 후에 서버가 임의의 작동을 완료되면 프로그램을 종료하는 방식이 아닌, **사용자가 중지시키기전까지 연속적으로 구동되고 있어야 하는 프로그램**(API 서버 등)은 옵션 명령어 `-d` 를 사용
 
+SpringBoot API 서버 구동 명령어
+
+***_`-p 9090:8080`_*** 는 PORT 연결을 위한 옵션 명령어
+
+`-p {your-local-inbound-port}:{your-docker-container-inbound-port}`
+
+웹 브라우져 URL 입력 창에 `http://{your-domain}:{your-local-inbound-port}` 형식으로 사용
+
 ```sh
 your-terminal> docker run -d -p 9090:8080 `{your-docker-image-name}`
+```
+
+또한, 구동되는 container 를 중지시키는 동시에 container 를 삭제하고자 할 경우 옵션 명령어 `--rm` 을 사용
+
+```sh
+your-terminal> docker run --rm -d -p 9090:8080 `{your-docker-image-name}`
 ```
 
 #### List containers in Docker
@@ -282,9 +296,6 @@ docker **stop** `{your-docker-container-id}`
 
 ```sh
 your-terminal> docker stop hello-world
-
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
-d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
 ```
 
 #### Remove container
