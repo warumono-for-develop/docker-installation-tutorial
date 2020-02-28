@@ -255,6 +255,10 @@ For more examples and ideas, visit:
  https://docs.docker.com/get-started/
 ```
 
+```sh
+your-terminal> docker run --rm -d -p 9090:8080 `{your-docker-image-name}`
+```
+
 `hello-world` 프로그램은 구동된 후에 서버가 임의의 작동을 완료되면 프로그램을 종료하는 방식이 아닌, **사용자가 중지시키기전까지 연속적으로 구동되고 있어야 하는 프로그램**(API 서버 등)은 옵션 명령어 `-d` 를 사용
 
 ```sh
@@ -265,7 +269,7 @@ your-terminal> docker run -d -p 9090:8080 `{your-docker-image-name}`
 
 docker **ps -a**
 
-```
+```sh
 your-terminal> docker ps -a
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
@@ -276,22 +280,39 @@ d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago  
 
 docker **stop** `{your-docker-container-id}`
 
-```
+```sh
 your-terminal> docker stop hello-world
 
 CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
 d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
 ```
 
-#### Stop container
+#### Remove container
 
-docker **stop** `{your-docker-container-id}`
+docker **rm** `{your-docker-container-id}`
 
+```sh
+your-terminal> docker rm hello-world
 ```
-your-terminal> docker stop hello-world
 
-CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS                     PORTS                         NAMES
-d3d5ae2842b1        hello-world         "/hello"                 3 minutes ago       Exited (0) 3 minutes ago                         sad_haibt
+모든 container 를 삭제하는 명령어
+
+```sh
+your-terminal> docker rm `docker ps -a -q`
+```
+
+#### Remove image
+
+docker **rmi** `{your-docker-container-id}`
+
+```sh
+your-terminal> docker rmi hello-world
+```
+
+모든 image 를 삭제하는 명령어
+
+```sh
+your-terminal> docker rmi `docker images`
 ```
 
 
