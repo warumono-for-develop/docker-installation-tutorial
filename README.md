@@ -325,8 +325,8 @@ your-terminal> docker xxxx --help
 <!--
 <details>
   <summary>
-    <i>Collapsible Link </i>
-    <a href="https://your-reference-url">Reference Link</a>
+    <i>Clickable Collapse Link</i>
+    <a href="https://your-reference-url"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Another Reference Link</a>
   </summary>
   <p>
     your contents
@@ -336,8 +336,8 @@ your-terminal> docker xxxx --help
 
 <details>
   <summary>
-    <i>View document </i>
-    <a href="https://docs.docker.com/engine/reference/commandline/cli/">Use the Docker command line</a>
+    <i>Click to view the document</i>
+    <a href="https://docs.docker.com/engine/reference/commandline/cli/"> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp; Use the Docker command line</a>
   </summary>
 
 > ## About image
