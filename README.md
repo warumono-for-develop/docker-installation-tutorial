@@ -178,12 +178,6 @@ Google Chrome 웹 브라우져의 경우, 알 수 없는 인증기관에서 발�
 ---
 </details>
 
-### Jupyter Notebook Dashboard
-
-*Jupyter 공식 웹사이트의 예시 화면*    
-예시 화면의 오른쪽 위 *`New v`* 버튼을 눌러 Drop Down 메뉴 중 *`Terminal`* 을 선택하면 새 브라우져 창 (또는 새 탭) 으로 터미널 화면이 나옴    
-![Jupyter Notebook Dashboard](https://jupyter.readthedocs.io/en/latest/_images/tryjupyter_file.png)
-
 
 
 ## FAQ
@@ -368,14 +362,7 @@ your-terminal> cat -n .vimrc
 </details>
 
 <details> 
-  <summary>Collapse</summary>
-
-[Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/)
-
-
-
-
-### Docker command
+  <summary>Docker 명령어 간단 사용 방법</summary>
 
 [Use the Docker command line](https://docs.docker.com/engine/reference/commandline/cli/)
 
