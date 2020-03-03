@@ -364,20 +364,20 @@ your-terminal> docker images --help
 
 #### About image
 
-* 로컬 이미지 목록 조회
-
-> docker images
-
-```sh
-your-terminal> docker images
-```
-
 * Docker Hub 로 부터 이미지 조회
 
 > docker search {your-docker-image-search-keyword}
 
 ```sh
 your-terminal> docker search hello
+```
+
+* 이미지 목록 조회
+
+> docker images
+
+```sh
+your-terminal> docker images
 ```
 
 * Docker Hub 로 부터 이미지 다운로드
@@ -389,7 +389,7 @@ your-terminal> docker pull hello-world:latest
 your-terminal> docker pull hello-world:0.1.9
 ```
 
-* 로컬 이미지 삭제
+* 이미지 삭제
 
 > docker rmi {your-docker-image-id}
 
@@ -397,7 +397,7 @@ your-terminal> docker pull hello-world:0.1.9
 your-terminal> docker rmi 1f1b68f35fa5
 ```
 
-* 로컬 이미지 전체 삭제
+* 이미지 전체 삭제
 
 > docker rmi \`docker images\`
 
@@ -407,7 +407,7 @@ your-terminal> docker rmi \`docker images\`
 
 ### About container
 
-* 로컬 컨테이너 목록 조회
+* 컨테이너 목록 조회
 
 > docker ps \[-a\]
 
@@ -420,7 +420,7 @@ your-terminal> docker ps
 your-terminal> docker ps -a
 ```
 
-* 로컬 컨테이너 실행
+* 컨테이너 실행
 
 > docker run [options] image[:TAG|@DIGEST] [COMMAND] [ARG...]
 
@@ -441,7 +441,7 @@ your-terminal> docker ps -a
 your-terminal> docker run --rm -d -p 9090:8080 hello-api --name api
 ```
 
-* 로컬 컨테이너 시작
+* 컨테이너 시작
 
 > docker start {your-docker-container-id-or-name}
 
@@ -450,7 +450,7 @@ your-terminal> docker start 1f1b68f35fa5
 your-terminal> docker start hello-world
 ```
 
-* 로컬 컨테이너 재시작
+* 컨테이너 재시작
 
 > docker restart {your-docker-container-id-or-name}
 
@@ -459,7 +459,7 @@ your-terminal> docker restart 1f1b68f35fa5
 your-terminal> docker restart hello-world
 ```
 
-* 로컬 컨테이너 접속
+* 컨테이너 접속
 
 > docker attach {your-docker-container-id-or-name}
 
