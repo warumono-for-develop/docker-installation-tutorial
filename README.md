@@ -452,8 +452,6 @@ your-terminal> docker start hello-world
 
 * 로컬 컨테이너 재시작
 
-<blockquote>
-
 > docker restart {your-docker-container-id-or-name}
 
 ```sh
@@ -499,9 +497,6 @@ Case 2
 ```sh
 your-terminal> sudo usermod -aG docker {your-user-name}
 ```
-
-
-
 
 ---
 </details>
