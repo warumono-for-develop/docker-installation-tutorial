@@ -108,7 +108,7 @@ Install Docker
 > apt-cache policy docker-ce    
 > apt install docker-ce
 
-Docker 상태 확인 후, <kbd>control</kbd> + <kdb>C</kbd> 키를 눌러 Docker 에서 나옴
+Docker 상태 확인 후, <kbd>control</kbd> + <kbd>C</kbd> 키를 눌러 Docker 에서 나옴
 
 ```sh
 your-terminal> apt-cache policy docker-ce
@@ -121,7 +121,7 @@ your-terminal> sudo systemctrl status docker
 
 ## Usage
 
-정상적으로 Docker 설치가 완료되었다면 Docker 공식 사이트에서 제공하는 샘플(?) image `hello-world` 를 다운로드하여 구동하는 것으로 Docker 기본 사용 방법 연습
+정상적으로 Docker 설치가 완료되었다면 Docker 공식 사이트에서 제공하는 image `hello-world` 를 다운로드하여 구동하는 것으로 Docker 기본 사용 방법 연습
 
 ### Pull image from Docker Hub
 
