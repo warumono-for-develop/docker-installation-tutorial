@@ -179,7 +179,8 @@ WARNING: Adding a user to the "docker" group will grant the ability to run
          docker host.
          Refer to https://docs.docker.com/engine/security/security/#docker-daemon-attack-surface
          for more information.
-your-terminal> 
+your-terminal> docker --version
+Docker version 19.03.8, build afacb8b7f0
 ```
 
 ## Usage
